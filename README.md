@@ -1,8 +1,27 @@
+<img src="extension/icons/icon128.png" width="96" alt="finsec-persona 아이콘">
+
 # finsec-persona
 
 국내 금융·공공 사이트가 확인하는 로컬 보안 프로그램의 응답을 모사하는 Node.js 서버와 이를 제어하는 Chromium 확장 프로그램입니다.
 
 실제 키보드 보안, 전자서명, 악성코드 차단 기능은 제공하지 않습니다. 본인 소유의 기기와 계정에서만 사용하세요.
+
+## 구현된 프로그램과 포트
+
+| 프로그램 | 프로토콜 | 포트 | 구현 상태 |
+|---|---|---:|---|
+| MagicLine4NX | HTTP | `19006` | 응답 모사 |
+| IPinside LWS Agent | HTTPS | `21300` | 응답 모사 |
+| IPinside v6 engine | WSS | `21400` | 연결 및 범용 응답 |
+| Veraport | HTTPS | `16105–16106` | 응답 모사 |
+| AhnLab Safe Transaction | HTTP | `12380`, `15530` | 응답 모사 |
+| AhnLab ASTX2 | HTTPS | `55920–55929` | 응답 모사 |
+| INISAFE CrossWeb EX | HTTP / HTTPS | `7710–7711`, `4441–4445` | 응답 모사 |
+| nProtect Online Security | HTTP / HTTPS | `16100`, `14440–14443` | 응답 모사 |
+| TouchEn nxKey | WS / WSS | `34580`, `34581–34583` | 응답 모사 |
+| AnySign4PC | WSS | `10531` | 연결 및 범용 응답 |
+
+포트와 구현 상태의 기준은 [`host/config.js`](host/config.js)입니다.
 
 ## 요구 사항
 
