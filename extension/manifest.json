@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "finsec-persona",
+  "version": "0.1.1",
+  "description": "로컬 보안프로그램 mock 서버(Node)를 제어하고, 사이트별로 navigator.platform 을 Windows 로 위장한다. 본인 PC·본인 계정 접근(호환성) 용도.",
+  "permissions": ["nativeMessaging", "scripting", "storage", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "finsec-persona",
+    "default_icon": { "16": "icons/icon16.png", "32": "icons/icon32.png" }
+  }
+}

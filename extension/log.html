@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>finsec-persona — 서버 로그</title>
+<style>
+  html, body { height: 100%; margin: 0; }
+  body { display: flex; flex-direction: column; font: 13px/1.5 -apple-system, system-ui, sans-serif; color: #e6e6e6; background: #1e1e1e; }
+  header { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #2a2a2a; border-bottom: 1px solid #3a3a3a; }
+  header h1 { font-size: 14px; margin: 0; color: #fff; }
+  header .spacer { flex: 1; }
+  button { font-size: 12px; padding: 4px 12px; border: 1px solid #555; border-radius: 5px; background: #3a3a3a; color: #eee; cursor: pointer; }
+  button:hover { background: #454545; }
+  label { font-size: 12px; color: #bbb; display: flex; align-items: center; gap: 5px; cursor: pointer; }
+  #log { flex: 1; margin: 0; padding: 12px 14px; overflow: auto; white-space: pre-wrap; word-break: break-all;
+         font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.55; color: #d4d4d4; }
+  #meta { padding: 6px 14px; font-size: 11px; color: #888; background: #2a2a2a; border-top: 1px solid #3a3a3a; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>서버 로그</h1>
+    <div class="spacer"></div>
+    <label><input type="checkbox" id="auto" /> 자동 새로고침 (2초)</label>
+    <button id="refresh">새로고침</button>
+  </header>
+  <pre id="log">불러오는 중…</pre>
+  <div id="meta"></div>
+  <script src="log.js"></script>
+</body>
+</html>

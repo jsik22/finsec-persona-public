@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<style>
+  body { font: 13px/1.5 -apple-system, system-ui, sans-serif; width: 320px; margin: 0; padding: 12px; color: #1a1a1a; }
+  h1 { font-size: 15px; margin: 0 0 10px; }
+  .sec { border: 1px solid #e3e3e3; border-radius: 8px; padding: 10px; margin-bottom: 10px; }
+  .row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: #c7c7c7; display: inline-block; margin-right: 7px; flex: none; }
+  .on { background: #2e9e44; } .off { background: #c33; }
+  /* 포트가 열려 있는데 우리 서버가 아닌 경우 — 그 행만 빨갛게 깜빡인다 */
+  .dot.bad { background: #d33; animation: blink 1.1s steps(1, end) infinite; }
+  tr.badrow td.pt, tr.badrow td.nm { color: #c33; }
+  tr.badrow { cursor: help; }
+  @keyframes blink { 50% { opacity: .15; } }
+  @media (prefers-reduced-motion: reduce) { .dot.bad { animation: none; } }
+  button { font-size: 11px; padding: 3px 9px; border: 1px solid #ccc; border-radius: 5px; background: #f6f6f6; cursor: pointer; }
+  button:hover { background: #eee; }
+  table.ports { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 12px; }
+  table.ports td { padding: 2px 0; }
+  td.pt { width: 56px; color: #555; font-variant-numeric: tabular-nums; }
+  td.nm { color: #1a1a1a; }
+  /* title 툴팁이 달려 있다 — hover 로 설명이 있다는 걸 알리려고 배경을 살짝 준다 */
+  label.sw { display: flex; align-items: baseline; gap: 7px; cursor: pointer; padding: 3px 4px; border-radius: 4px; margin: 0 -4px; }
+  label.sw:hover { background: #f2f2f2; }
+  .err { color: #c33; font-size: 11px; margin-top: 6px; }
+  .cap { font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+  .hint { color: #777; font-size: 11px; }
+  .note { color: #777; font-size: 11px; margin-top: 6px; }
+</style>
+</head>
+<body>
+  <h1>finsec-persona</h1>
+
+  <div class="sec">
+    <div class="row">
+      <div><span id="srvDot" class="dot"></span><span id="srvText">상태 확인 중…</span></div>
+      <div>
+        <button id="btnStart">시작</button>
+        <button id="btnStop">중지</button>
+        <button id="btnLog">로그</button>
+      </div>
+    </div>
+    <div id="srvErr" class="err"></div>
+    <table class="ports"><tbody id="portRows"></tbody></table>
+  </div>
+
+  <div class="sec">
+    <div class="cap">navigator 위장 <span class="hint" id="spoofOrigin"></span></div>
+    <label class="sw" title="기본값. 이 사이트에서 navigator 를 건드리지 않는다. 막히면 위장보다 먼저 서버 응답을 의심할 것.">
+      <input type="radio" name="spoof" value="off" /><span>끄기</span></label>
+    <label class="sw" title="맥·리눅스라서 Windows 전용 모듈이 '미지원' 으로 처리되는 사이트용. navigator.platform 을 Win32 로 위조한다.">
+      <input type="radio" name="spoof" value="win" /><span>Windows(Win32) 로 위장</span></label>
+    <label class="sw" title="Windows 일 때 오히려 키보드보안 등을 강제하는 사이트용. 비Windows 전용 지름길을 타게 만든다.">
+      <input type="radio" name="spoof" value="mac" /><span>macOS(MacIntel) 로 위장</span></label>
+    <div id="spoofErr" class="err"></div>
+    <div class="note">바꾼 뒤 페이지를 새로고침해야 적용된다.</div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

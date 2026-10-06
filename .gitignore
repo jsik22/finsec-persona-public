@@ -1,0 +1,18 @@
+# 인증서/개인키 — 사용자 PC 에서 install.sh / 첫 실행 시 생성
+host/certs/
+*.key
+*.crt
+*.pem
+
+# 실행 산출물 (요청 로그에 접속 사이트 기록이 남음)
+# *.log.* 는 보존해 둔 실측 로그 (server.log.20260930-1348 등). 라이선스·인증서 블롭이 들어 있다.
+*.log
+*.log.*
+*.pid
+
+# install.sh / install.ps1 가 생성 (사용자 PC 의 node 절대경로·확장 ID 포함)
+host/run-host.sh
+host/run-host.bat
+host/com.finsec.host.json
+
+.DS_Store
