@@ -72,6 +72,8 @@ sudo security add-trusted-cert -d -r trustRoot \
 
 팝업의 **서버 로그**에서 최근 요청을 확인할 수 있습니다.
 
+서버 중지나 구동에 문제가 발생하면 실행 중인 Node.js 프로세스를 종료한 뒤 다시 시도하세요.
+
 ## 라이선스
 
 [MIT](LICENSE)
